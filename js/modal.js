@@ -31,15 +31,15 @@ export const createForm =() =>{
 					</div>`;
 
 	// bouton launch modal HTML creation
-	mainContainer.innerHTML += `<button class="button button--contact" alt="contact me">
+	mainContainer.innerHTML += `<button class="button button--contact" alt="contact me" data-trigger="contact">
 		Contactez-moi
 		</button>`;
 
 	// DOM Elements
 	const modalBg = document.querySelector(".form__background");
-	const contactBtn = document.querySelectorAll(".button--contact");
+	//const contactBtn = document.querySelectorAll(".button--contact");
 	const formData = document.querySelectorAll(".form__data");
-	const closeBtn = document.querySelectorAll(".form__closeX");
+	//const closeBtn = document.querySelectorAll(".form__closeX");
 	const form = document.querySelector("form[name=reserve]");
 	const formBody = document.querySelector(".form__body");
 	const firstNameForm = document.querySelector("#first");
@@ -47,15 +47,24 @@ export const createForm =() =>{
 	const emailForm = document.querySelector("#email");
 	const messageForm = document.querySelector("#message");
 	const submitBtn = document.querySelectorAll(".button--submit");
-
-	// launch modal event
-	contactBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-	// close modal event
-	closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
+	
+	// Délégation d'évènements
+	document.addEventListener("click", (e) => {
+		if(e.target.dataset.trigger === "contact"){
+			launchModal();
+		}
+	});
+	document.addEventListener("click", (e) => {
+		if(e.target.dataset.trigger === "closeX"){
+			closeModal();
+		}
+	});
+	//contactBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+	//closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
 	// launch modal form
 	function launchModal() {
+		const modalBg = document.querySelector(".form__background");
 		modalBg.style.display = "block";
 	}
 
