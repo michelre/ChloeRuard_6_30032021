@@ -12,6 +12,7 @@ class Index {
 		fetch("FishEyeData.json")
 			.then((response) => response.json())
 			.then((data) => {
+				console.log(data);
 				this.photographers = data.photographers;
 				this.displayPhotographCards();
 			})
@@ -26,7 +27,7 @@ class Index {
 			const photographerCard = new PhotographerCard(photographer);
 			return photographerCard.render();
 		});
-		mainContainer.innerHTML = cards.join("");
+		mainContainer.innerHTML += cards.join("");
 	}
 }
 
