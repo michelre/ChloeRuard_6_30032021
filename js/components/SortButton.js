@@ -1,8 +1,5 @@
 // sort select HTML creation
 export default class SortButton {
-	constructor(tag) {
-		this.tag = tag;
-	}
 
 	render() {
 		return `<div class="sort">
@@ -15,5 +12,3 @@ export default class SortButton {
 		</div>`;
 	}
 }
-
-//const sortedMedias = media.slice().sort((a, b) => b.date - a.date)
