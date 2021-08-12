@@ -1,7 +1,6 @@
 import { createForm } from "./js/modal.js";
-import { createSort } from "./js/sort.js";
+import SortButton from "./js/components/SortButton.js";
 createForm();
-createSort();
 import { createHeart } from "./js/heart.js";
 createHeart();
 import PhotographerCard from "./js/components/PhotographerCard.js";
@@ -29,6 +28,7 @@ class Photograph {
 				});
 				console.log(this.medium);
 				this.displayMedia();
+				this.displaySort();
 			})
 			.catch(function (err) {
 				console.log(err);
@@ -46,6 +46,11 @@ class Photograph {
 			return photographerMedia.render();
 		});
 		mainContainer.innerHTML += picture.join("");
+	}
+	displaySort() {
+		const mainContainer = document.querySelector(".mainContainer");
+		const sortButton = new SortButton();
+		mainContainer.innerHTML += sortButton.render();
 	}
 }
 new Photograph();

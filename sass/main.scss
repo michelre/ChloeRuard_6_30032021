@@ -174,3 +174,21 @@
 .form__data[data-error-visible="true"] .text-control {
 	border: 2px solid $secondary-text-color;
 }
+
+.media {
+	// display: grid;
+	// grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+	// gap: 20px;
+		&__medium{
+			width: 200px;
+			height: 200px;
+			overflow: hidden;
+		}
+		&__img{
+			@include img-max;
+		}
+		&__video{
+			display: block;
+			@include img-max;
+		}
+}

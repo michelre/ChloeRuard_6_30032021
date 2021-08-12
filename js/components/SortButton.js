@@ -1,7 +1,11 @@
 // sort select HTML creation
-export const createSort =() =>{
-	const mainContainer = document.querySelector(".mainContainer");
-	mainContainer.innerHTML += `<div class="sort">
+export default class SortButton {
+	constructor(tag) {
+		this.tag = tag;
+	}
+
+	render() {
+		return `<div class="sort">
 		<label for="order by" class="sort__label">Trier par</label>
 		<select name="Order by" id="tri" class="button button--select">
 			<option value="popularité">Popularité</option>
@@ -9,6 +13,7 @@ export const createSort =() =>{
 			<option value="titre">Titre</option>
 		</select>
 		</div>`;
-};
+	}
+}
 
 //const sortedMedias = media.slice().sort((a, b) => b.date - a.date)
