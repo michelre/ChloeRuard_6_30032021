@@ -39,7 +39,7 @@ export default class PhotographerMedia {
 				</div>
 				<div class="media__legend">
 					<h2 class="media__title">${this.title}</h2>
-					<div class="media__likes">${this.likes}</div>
+					<div class="media__likes">${this.renderHeart()}</div>
 				</div>
 			</article>`;
 		}
