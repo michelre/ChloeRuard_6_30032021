@@ -22,18 +22,19 @@ export default class PhotographerCard {
 	}
 
 	render() {
-		return `<article class="photographer">
-            <a alt="${this.name}" href="photograph.html?id=${this.id}" class="photographer__link">
-                <div class="photographer__picture">
-                    <img src="img/thumbnails/${this.portrait}" alt="">
-                </div>
-                <h2 class="photographer__name">${this.name}</h2>
-            </a>
-            <div class="photographer__location">${this.city}, ${this.country}</div>
-            <div class="photographer__tagline">${this.tagline}</div>
-            <div class="photographer__price">${this.price}€/jour</div>
-            <div class="photographer__tags">${this.renderTags()}</div>
-        </article>`;
+		return `
+		<article class="photographer">
+        <a alt="${this.name}" href="photograph.html?id=${this.id}" class="photographer__link">
+            <div class="photographer__picture">
+                <img src="img/thumbnails/${this.portrait}" alt="">
+            </div>
+            <h2 class="photographer__name">${this.name}</h2>
+        </a>
+        <div class="photographer__location">${this.city}, ${this.country}</div>
+        <div class="photographer__tagline">${this.tagline}</div>
+      	<div class="photographer__price">${this.price}€/jour</div>
+        <div class="photographer__tags">${this.renderTags()}</div>
+    	</article>`;
 	}
 
 	createPhotographerHeader() {
