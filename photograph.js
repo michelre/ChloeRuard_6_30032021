@@ -3,6 +3,7 @@ import SortButton from "./js/components/SortButton.js";
 createForm();
 import PhotographerCard from "./js/components/PhotographerCard.js";
 import PhotographerMedia from "./js/components/PhotographerMedia.js";
+import Header from "./js/components/Header.js";
 
 class Photograph {
 	constructor() {
@@ -20,6 +21,7 @@ class Photograph {
 				this.photographer = data.photographers.find((photographer) => {
 					return photographer.id === parseInt(id);
 				});
+				this.displayHeader();
 				this.displayPhotographer();
 				this.mediums = data.media.filter((mediums) => {
 					return mediums.photographerId === parseInt(id);
@@ -34,6 +36,13 @@ class Photograph {
 				console.log(err);
 			});
 	}
+
+	displayHeader(){
+		const mainContainer = document.querySelector(".mainContainer");
+		const header = new Header();
+		mainContainer.innerHTML += header.render();
+	}
+
 	displayPhotographer() {
 		const mainContainer = document.querySelector(".mainContainer");
 		const photographerCard = new PhotographerCard(this.photographer);

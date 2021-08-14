@@ -1,4 +1,5 @@
 import PhotographerCard from "./js/components/PhotographerCard.js";
+import Header from "./js/components/Header.js";
 
 class Index {
 	constructor() {
@@ -14,11 +15,18 @@ class Index {
 			.then((data) => {
 				console.log(data);
 				this.photographers = data.photographers;
+				this.displayHeader();
 				this.displayPhotographCards();
 			})
 			.catch(function (err) {
 				console.log(err);
 			});
+	}
+
+	displayHeader(){
+		const mainContainer = document.querySelector(".mainContainer");
+		const header = new Header();
+		mainContainer.innerHTML += header.render();
 	}
 
 	displayPhotographCards() {
