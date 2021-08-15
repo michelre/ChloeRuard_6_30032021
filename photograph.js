@@ -1,7 +1,7 @@
 import { createForm } from "./js/modal.js";
-import SortButton from "./js/components/SortButton.js";
 createForm();
-import PhotographerCard from "./js/components/PhotographerCard.js";
+import SortButton from "./js/components/SortButton.js";
+import PhotographerHeader from "./js/components/PhotographerHeader.js";
 import PhotographerMedia from "./js/components/PhotographerMedia.js";
 import Header from "./js/components/Header.js";
 
@@ -45,8 +45,8 @@ class Photograph {
 
 	displayPhotographer() {
 		const mainContainer = document.querySelector(".mainContainer");
-		const photographerCard = new PhotographerCard(this.photographer);
-		mainContainer.innerHTML += photographerCard.render();
+		const photographerHeader = new PhotographerHeader(this.photographer);
+		mainContainer.innerHTML += photographerHeader.render();
 	}
 	displayMedia() {
 		const mainContainer = document.querySelector(".mainContainer");
