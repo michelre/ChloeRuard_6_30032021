@@ -37,7 +37,7 @@ class Photograph {
 			});
 	}
 
-	displayHeader(){
+	displayHeader() {
 		const mainContainer = document.querySelector(".mainContainer");
 		const header = new Header();
 		mainContainer.innerHTML += header.render();

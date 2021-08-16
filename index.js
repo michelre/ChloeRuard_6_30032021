@@ -1,6 +1,7 @@
 import PhotographerCard from "./js/components/PhotographerCard.js";
 import Header from "./js/components/Header.js";
 import ContentButton from "./js/components/ContentButton.js";
+import Navigation from "./js/Navigation.js";
 
 class Index {
 	constructor() {
@@ -17,6 +18,7 @@ class Index {
 				console.log(data);
 				this.photographers = data.photographers;
 				this.displayHeader();
+				this.displayNavigation();
 				this.displayPhotographCards();
 				this.displayContentButton();
 				this.contentButtonScroll();
@@ -26,10 +28,19 @@ class Index {
 			});
 	}
 
-	displayHeader(){
+	displayHeader() {
 		const mainContainer = document.querySelector(".mainContainer");
-		const header = new Header;
+		const header = new Header();
 		mainContainer.innerHTML += header.render();
+	}
+
+	displayNavigation() {
+		const header = document.querySelector("header");
+		const allTags = this.photographers.map((photographer) => {
+			return photographer.tags;
+		}).flat();
+		const navigation = new Navigation(allTags);
+		header.innerHTML += navigation.render();
 	}
 
 	displayPhotographCards() {
@@ -41,16 +52,14 @@ class Index {
 		mainContainer.innerHTML += cards.join("");
 	}
 
-	displayContentButton(){
+	displayContentButton() {
 		const mainContainer = document.querySelector(".mainContainer");
-		const contentButton = new ContentButton;
+		const contentButton = new ContentButton();
 		mainContainer.innerHTML += contentButton.render();
 	}
 
-	contentButtonScroll(){
+	contentButtonScroll() {
 		const contentButton = document.querySelector(".button--content");
-		console.log(contentButton);
-		console.log(document.body.scrollTop);
 		window.addEventListener("scroll", () => {
 			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
 				contentButton.style.display = "block";
