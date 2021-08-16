@@ -4,6 +4,7 @@ import SortButton from "./js/components/SortButton.js";
 import PhotographerHeader from "./js/components/PhotographerHeader.js";
 import PhotographerMedia from "./js/components/PhotographerMedia.js";
 import Header from "./js/components/Header.js";
+import TotalLikes from "./js/TotalLikes.js";
 
 class Photograph {
 	constructor() {
@@ -31,6 +32,7 @@ class Photograph {
 				this.displaySort();
 				this.sortMedia();
 				this.incrementLikes();
+				this.displayTotalLikes();
 			})
 			.catch(function (err) {
 				console.log(err);
@@ -48,6 +50,7 @@ class Photograph {
 		const photographerHeader = new PhotographerHeader(this.photographer);
 		mainContainer.innerHTML += photographerHeader.render();
 	}
+
 	displayMedia() {
 		const mainContainer = document.querySelector(".mainContainer");
 		const picture = this.mediums.map((medium) => {
@@ -56,11 +59,13 @@ class Photograph {
 		});
 		mainContainer.innerHTML += picture.join("");
 	}
+
 	displaySort() {
 		const mainContainer = document.querySelector(".mainContainer");
 		const sortButton = new SortButton();
 		mainContainer.innerHTML += sortButton.render();
 	}
+
 	sortMedia() {
 		const selectList = document.querySelector(".button--select");
 		selectList.addEventListener("change", () => {
@@ -86,6 +91,7 @@ class Photograph {
 			}
 		});
 	}
+
 	incrementLikes() {
 		const hearts = document.querySelectorAll(".likes__icon");
 		console.log(hearts);
@@ -100,6 +106,13 @@ class Photograph {
 				console.log(selectedMedium.likes + 1);
 			});
 		});
+	}
+
+	displayTotalLikes() {
+		const mainContainer = document.querySelector(".mainContainer");
+		const allLikes = this.mediums.reduce((acc, medium) => acc + medium.likes, 0);
+		const totalLikes = new TotalLikes(this.photographer, allLikes);
+		mainContainer.innerHTML += totalLikes.render();
 	}
 }
 new Photograph();
