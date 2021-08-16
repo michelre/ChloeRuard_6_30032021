@@ -1,7 +1,7 @@
 import PhotographerCard from "./js/components/PhotographerCard.js";
 import Header from "./js/components/Header.js";
 import ContentButton from "./js/components/ContentButton.js";
-import Navigation from "./js/Navigation.js";
+import Navigation from "./js/components/Navigation.js";
 
 class Index {
 	constructor() {

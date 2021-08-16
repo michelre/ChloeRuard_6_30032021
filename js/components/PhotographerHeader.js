@@ -25,7 +25,7 @@ export default class PhotographerHeader {
 		return `
 	<section class="photographer__header">
 		<div class="photographer__description">			
-			<h1 class="photographer__name">${this.name}</div>
+			<h1 class="photographer__name">${this.name}</h1>
 			<div class="photographer__location">${this.city}, ${this.country}</div>
 			<div class="photographer__tagline">${this.tagline}</div>
 			<div class="photographer__tags">${this.renderTags()}</div>

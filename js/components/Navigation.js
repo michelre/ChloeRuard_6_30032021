@@ -1,4 +1,4 @@
-import Tag from "./components/Tag.js";
+import Tag from "./Tag.js";
 
 export default class Navigation {
 	constructor(tags) {
