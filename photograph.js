@@ -28,7 +28,7 @@ class Photograph {
 					return mediums.photographerId === parseInt(id);
 				});
 				console.log(this.mediums);
-				this.displayMedia();
+				this.displayMedia(this.mediums);
 				this.displaySort();
 				this.sortMedia();
 				this.displayTotalLikes();
@@ -50,13 +50,13 @@ class Photograph {
 		mainContainer.innerHTML += photographerHeader.render();
 	}
 
-	displayMedia() {
-		const mainContainer = document.querySelector(".mainContainer");
-		const picture = this.mediums.map((medium) => {
+	displayMedia(mediums) {
+		const mainContainer = document.querySelector(".photograph__mediums");
+		const picture = mediums.map((medium) => {
 			const photographerMedia = new PhotographerMedia(medium);
 			return photographerMedia.render();
 		});
-		mainContainer.innerHTML += picture.join("");
+		mainContainer.innerHTML = picture.join("");
 	}
 
 	displaySort() {
@@ -66,27 +66,29 @@ class Photograph {
 	}
 
 	sortMedia() {
-		const selectList = document.querySelector(".button--select");
-		selectList.addEventListener("change", () => {
-			if (selectList.value == "titre") {
-				this.mediums.sort((a, b) => {
-					return a.title.localeCompare(b.title);
-				});
-				console.log(this.mediums);
-			}
-			if (selectList.value == "date") {
-				this.mediums.sort((a, b) => {
-					const dateA = new Date(a.date);
-					const dateB = new Date(b.date);
-					return dateB - dateA;
-				});
-				console.log(this.mediums);
-			}
-			if (selectList.value == "popularité") {
-				this.mediums.sort((a, b) => {
-					return b.likes - a.likes;
-				});
-				console.log(this.mediums);
+		document.addEventListener("change", (e) => {
+			if (e.target.dataset.trigger === "select") {
+				console.log(e.target.value);
+				if (e.target.value == "titre") {
+					let sortedMediums = this.mediums.sort((a, b) => {
+						return a.title.localeCompare(b.title);
+					});
+					this.displayMedia(sortedMediums);
+				}
+				if (e.target.value == "date") {
+					let sortedMediums = this.mediums.sort((a, b) => {
+						const dateA = new Date(a.date);
+						const dateB = new Date(b.date);
+						return dateB - dateA;
+					});
+					this.displayMedia(sortedMediums);
+				}
+				if (e.target.value == "popularité") {
+					let sortedMediums = this.mediums.sort((a, b) => {
+						return b.likes - a.likes;
+					});
+					this.displayMedia(sortedMediums);
+				}
 			}
 		});
 	}
