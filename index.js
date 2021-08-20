@@ -19,7 +19,8 @@ class Index {
 				this.photographers = data.photographers;
 				this.displayHeader();
 				this.displayNavigation();
-				this.displayPhotographCards();
+				this.displayPhotographCards(this.photographers);
+				this.sortPhotographers();
 				this.displayContentButton();
 				this.contentButtonScroll();
 			})
@@ -36,20 +37,34 @@ class Index {
 
 	displayNavigation() {
 		const header = document.querySelector("header");
-		const allTags = this.photographers.map((photographer) => {
-			return photographer.tags;
-		}).flat();
+		const allTags = this.photographers
+			.map((photographer) => {
+				return photographer.tags;
+			})
+			.flat();
 		const navigation = new Navigation(allTags);
 		header.innerHTML += navigation.render();
 	}
 
-	displayPhotographCards() {
-		const mainContainer = document.querySelector(".mainContainer");
-		const cards = this.photographers.map((photographer) => {
+	displayPhotographCards(photographers) {
+		const mainContainer = document.querySelector(".photographers__cards");
+		const cards = photographers.map((photographer) => {
 			const photographerCard = new PhotographerCard(photographer);
 			return photographerCard.render();
 		});
-		mainContainer.innerHTML += cards.join("");
+		mainContainer.innerHTML = cards.join("");
+	}
+
+	sortPhotographers() {
+		document.addEventListener("click", (e) => {
+			if (e.target.dataset.trigger === "tag") {
+				console.log(e.target.dataset.id);
+				let filteredPhotographs = this.photographers.filter((photographer) =>
+					photographer.tags.some((tag) => tag == e.target.dataset.id)
+				);
+				this.displayPhotographCards(filteredPhotographs);
+			}
+		});
 	}
 
 	displayContentButton() {

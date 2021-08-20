@@ -4,6 +4,6 @@ export default class Tag {
 	}
 
 	render() {
-		return `<span class="photographer__tags__tag">#${this.tag}</span>`;
+		return `<span class="photographer__tags__tag" data-id="${this.tag}" data-trigger="tag">#${this.tag}</span>`;
 	}
 }
