@@ -31,7 +31,6 @@ class Photograph {
 				this.displayMedia();
 				this.displaySort();
 				this.sortMedia();
-				this.incrementLikes();
 				this.displayTotalLikes();
 			})
 			.catch(function (err) {
@@ -89,22 +88,6 @@ class Photograph {
 				});
 				console.log(this.mediums);
 			}
-		});
-	}
-
-	incrementLikes() {
-		const hearts = document.querySelectorAll(".likes__icon");
-		console.log(hearts);
-		hearts.forEach((heart) => {
-			heart.addEventListener("click", (e) => {
-				const idData = e.target.dataset.trigger;
-				console.log(idData);
-				console.log(this.mediums);
-				const selectedMedium = this.mediums.find((medium) => {
-					return medium.id == idData;
-				});
-				console.log(selectedMedium.likes + 1);
-			});
 		});
 	}
 
