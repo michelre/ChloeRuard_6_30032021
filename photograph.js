@@ -3,7 +3,7 @@ import PhotographerHeader from "./js/components/PhotographerHeader.js";
 import PhotographerMedia from "./js/components/PhotographerMedia.js";
 import Header from "./js/components/Header.js";
 import TotalLikes from "./js/components/TotalLikes.js";
-import ModalForm from "./js/modal.js";
+import ModalForm from "./js/components/ModalForm.js";
 
 class Photograph {
 	constructor() {
