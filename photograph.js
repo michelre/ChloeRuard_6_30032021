@@ -1,10 +1,9 @@
-import { createForm } from "./js/modal.js";
-createForm();
 import SortButton from "./js/components/SortButton.js";
 import PhotographerHeader from "./js/components/PhotographerHeader.js";
 import PhotographerMedia from "./js/components/PhotographerMedia.js";
 import Header from "./js/components/Header.js";
 import TotalLikes from "./js/components/TotalLikes.js";
+import ModalForm from "./js/modal.js";
 
 class Photograph {
 	constructor() {
@@ -24,6 +23,8 @@ class Photograph {
 				});
 				this.displayHeader();
 				this.displayPhotographer();
+				this.displayForm();
+
 				this.mediums = data.media.filter((mediums) => {
 					return mediums.photographerId === parseInt(id);
 				});
@@ -48,6 +49,14 @@ class Photograph {
 		const mainContainer = document.querySelector(".mainContainer");
 		const photographerHeader = new PhotographerHeader(this.photographer);
 		mainContainer.innerHTML += photographerHeader.render();
+	}
+
+	displayForm() {
+		const mainContainer = document.querySelector(".mainContainer");
+		const modalForm = new ModalForm(this.photographer);
+		mainContainer.innerHTML += modalForm.renderbutton();
+		mainContainer.innerHTML += modalForm.renderForm();
+		modalForm.workingForm();
 	}
 
 	displayMedia(mediums) {
