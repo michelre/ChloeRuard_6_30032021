@@ -62,9 +62,10 @@ export default class ModalForm {
 
 		document.addEventListener("submit", (e) => {
 			if (e.target.dataset.trigger === "form") {
-				console.log("ok");
 				e.preventDefault();
 				validate();
+				const inputs = document.querySelectorAll(".text-control");
+				inputs.forEach((input) =>console.log(input.value));
 			}
 		});
 
