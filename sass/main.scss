@@ -175,6 +175,8 @@
 	border: 2px solid $secondary-text-color;
 }
 
+//media
+
 .media {
 	// display: grid;
 	// grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -191,4 +193,40 @@
 			display: block;
 			@include img-max;
 		}
+}
+
+// lightbox
+.lightbox{
+&__background {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgb(196, 196, 196, 0.5);
+}
+&__modal {
+	margin: 5% auto;
+	padding: 30px;
+	max-width: 660px;
+	background: $secondary-background-color;
+	border-radius: 5px;
+	overflow: hidden;
+	position: relative;
+	box-shadow: -5px 10px 30px 0px rgba(0, 0, 0, 0.4);
+}
+&__video {
+	display: block;
+	@include img-max;
+}
+&__img{
+	@include img-max;
+}
+&__media{
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+}
 }

@@ -4,6 +4,7 @@ import PhotographerMedia from "./js/components/PhotographerMedia.js";
 import Header from "./js/components/Header.js";
 import TotalLikes from "./js/components/TotalLikes.js";
 import ModalForm from "./js/components/ModalForm.js";
+import LightBox from "./js/LightBox.js";
 
 class Photograph {
 	constructor() {
@@ -33,6 +34,7 @@ class Photograph {
 				this.displaySort();
 				this.sortMedia();
 				this.displayTotalLikes();
+				this.displayLightBox();
 			})
 			.catch(function (err) {
 				console.log(err);
@@ -107,6 +109,13 @@ class Photograph {
 		const allLikes = this.mediums.reduce((acc, medium) => acc + medium.likes, 0);
 		const totalLikes = new TotalLikes(this.photographer, allLikes);
 		mainContainer.innerHTML += totalLikes.render();
+	}
+
+	displayLightBox() {
+		const mainContainer = document.querySelector(".mainContainer");
+		const lightbox = new LightBox(this.mediums);
+		mainContainer.innerHTML += lightbox.render();
+		lightbox.workingLightbox();
 	}
 }
 new Photograph();

@@ -23,7 +23,7 @@ export default class PhotographerMedia {
 			return `
 			<article class="media">
         <div class="media__medium">
-          <img class="media__img" src="img/${this.photographerId}/${this.image}" alt="${this.alt}">
+          <img class="media__img" src="img/${this.photographerId}/${this.image}" alt="${this.alt}" data-trigger="medium__img">
         </div>
 				<div class="media__legend">
 					<h2 class="media__title">${this.title}</h2>
@@ -34,7 +34,7 @@ export default class PhotographerMedia {
 			return `
 			<article class="media">
 				<div class="media__medium">
-					<video class="media__video" controls="controls" src="img/${this.photographerId}/${this.video}">
+					<video class="media__video" src="img/${this.photographerId}/${this.video}" data-trigger="medium__video">
 						<p> ${this.alt} </p>
 					</video>
 				</div>
