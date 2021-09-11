@@ -60,7 +60,7 @@ class Index {
 			if (e.target.dataset.trigger === "tag") {
 				console.log(e.target.dataset.id);
 				let filteredPhotographs = this.photographers.filter((photographer) =>
-					photographer.tags.some((tag) => tag == e.target.dataset.id)
+					photographer.tags.includes(e.target.dataset.id)
 				);
 				this.displayPhotographCards(filteredPhotographs);
 			}

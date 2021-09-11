@@ -44,6 +44,7 @@ export default class LightBox {
 	workingLightbox() {
 		document.addEventListener("click", (e) => {
 			if (e.target.dataset.trigger.includes("medium")) {
+				console.log(e.target);
 				launchLightbox();
 			}
 		});
@@ -62,6 +63,7 @@ export default class LightBox {
 		const launchLightbox = () => {
 			const lightboxBg = document.querySelector(".lightbox__background");
 			lightboxBg.style.display = "block";
+	
 		};
 
 		const allMediums = document.querySelectorAll(".media__medium");

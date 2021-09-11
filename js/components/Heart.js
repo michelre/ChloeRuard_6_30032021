@@ -9,7 +9,7 @@ export default class Heart {
 		document.addEventListener("click", (e) => {
 			if (e.target.dataset.trigger == this.id) {
 				const numberL = document.querySelector(`[data-likes='${this.id}']`);
-				numberL.textContent= this.likes +1;
+				numberL.textContent = this.likes + 1;
 			}
 		});
 	}

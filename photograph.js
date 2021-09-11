@@ -106,8 +106,10 @@ class Photograph {
 
 	displayTotalLikes() {
 		const mainContainer = document.querySelector(".mainContainer");
-		const allLikes = this.mediums.reduce((acc, medium) => acc + medium.likes, 0);
-		const totalLikes = new TotalLikes(this.photographer, allLikes);
+		const likesNumber = document.querySelectorAll(".likes__number");
+		const likesArray = Array.from(likesNumber).map(acc => parseInt(acc.textContent));
+		const likesSum = likesArray.reduce((total, likes) => total + likes, 0);
+		const totalLikes = new TotalLikes(this.photographer, likesSum);
 		mainContainer.innerHTML += totalLikes.render();
 	}
 
