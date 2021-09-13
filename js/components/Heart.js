@@ -6,17 +6,14 @@ export default class Heart {
 	}
 
 	incrementLikes() {
-		document.addEventListener("click", (e) => {
-			if (e.target.dataset.trigger == this.id) {
-				const numberL = document.querySelector(`[data-likes='${this.id}']`);
-				numberL.textContent = this.likes + 1;
-			}
-		});
+		//this.likes += 1;
+		const numberLikes = document.querySelector(`[data-likes='${this.id}']`);
+		numberLikes.textContent = this.likes +1;
 	}
 
 	render() {
 		return `
-			<div class="likes__number" data-likes=${this.id}>${this.likes}</div>
-			<img class="likes__icon" alt="likes" src="img/heart.svg" data-trigger=${this.id}></img>`;
+			<div class="likes__number" data-likes="${this.id}">${this.likes}</div>
+			<img class="likes__icon" alt="likes" src="img/heart.svg" data-trigger="addLike" data-id="${this.id}"></img>`;
 	}
 }

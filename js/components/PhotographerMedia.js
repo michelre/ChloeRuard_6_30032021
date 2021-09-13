@@ -13,9 +13,12 @@ export default class PhotographerMedia {
 	}
 
 	renderHeart() {
-		const heartComponent = new Heart(this.likes, this.id);
-		heartComponent.incrementLikes();
-		return heartComponent.render();
+		this.heartComponent = new Heart(this.likes, this.id);
+		return this.heartComponent.render();
+	}
+
+	incrementLikes() {
+		this.heartComponent.incrementLikes();
 	}
 
 	render() {

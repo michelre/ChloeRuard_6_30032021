@@ -35,6 +35,7 @@ class Photograph {
 				this.sortMedia();
 				this.displayTotalLikes();
 				this.displayLightBox();
+				this.incrementLikes();
 			})
 			.catch(function (err) {
 				console.log(err);
@@ -63,8 +64,10 @@ class Photograph {
 
 	displayMedia(mediums) {
 		const mainContainer = document.querySelector(".photograph__mediums");
+		this.photographerMediaArray = [];
 		const picture = mediums.map((medium) => {
 			const photographerMedia = new PhotographerMedia(medium);
+			this.photographerMediaArray.push(photographerMedia);
 			return photographerMedia.render();
 		});
 		mainContainer.innerHTML = picture.join("");
@@ -107,10 +110,25 @@ class Photograph {
 	displayTotalLikes() {
 		const mainContainer = document.querySelector(".mainContainer");
 		const likesNumber = document.querySelectorAll(".likes__number");
-		const likesArray = Array.from(likesNumber).map(acc => parseInt(acc.textContent));
+		const likesArray = Array.from(likesNumber).map((acc) => parseInt(acc.textContent));
 		const likesSum = likesArray.reduce((total, likes) => total + likes, 0);
-		const totalLikes = new TotalLikes(this.photographer, likesSum);
-		mainContainer.innerHTML += totalLikes.render();
+		this.totalLikes = new TotalLikes(this.photographer, likesSum);
+		mainContainer.innerHTML += this.totalLikes.render();
+	}
+
+	incrementLikes() {
+		document.addEventListener("click", (e) => {
+			if (e.target.dataset.trigger === "addLike") {
+				const id = e.target.dataset.id;
+				const photographerMedia = this.photographerMediaArray.find((medium) => {
+					return medium.id == id;
+				});
+				if (photographerMedia) {
+					photographerMedia.incrementLikes();
+					this.totalLikes.incrementTotalLikes();
+				}
+			}
+		});
 	}
 
 	displayLightBox() {
