@@ -23,17 +23,15 @@ export default class PhotographerHeader {
 
 	render() {
 		return `
-	<section class="photographer__header">
 		<div class="photographer__description">			
 			<h1 class="photographer__name">${this.name}</h1>
 			<div class="photographer__location">${this.city}, ${this.country}</div>
 			<div class="photographer__tagline">${this.tagline}</div>
-			<div class="photographer__tags">${this.renderTags()}</div>
+			<div class="photographer__tags photographer__tags__header">${this.renderTags()}</div>
 		</div>
-		<div photographer__contact></div>
-		<div class="photographer__picture">
+		<div class="photographer__contact"></div>
+		<div class="photographer__picture photographer__picture__header">
 			<img src="img/thumbnails/${this.portrait}" alt="${this.name}">
-		</div>
-	</section>`;
+		</div>`;
 	}
 }

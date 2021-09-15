@@ -43,40 +43,40 @@ class Photograph {
 	}
 
 	displayHeader() {
-		const mainContainer = document.querySelector(".mainContainer");
+		const headerContainer = document.querySelector(".headerContainer");
 		const header = new Header();
-		mainContainer.innerHTML += header.render();
+		headerContainer.innerHTML += header.render();
 	}
 
 	displayPhotographer() {
-		const mainContainer = document.querySelector(".mainContainer");
+		const photographerHeaderContainer = document.querySelector(".photographer__header");
 		const photographerHeader = new PhotographerHeader(this.photographer);
-		mainContainer.innerHTML += photographerHeader.render();
+		photographerHeaderContainer.innerHTML += photographerHeader.render();
 	}
 
 	displayForm() {
-		const mainContainer = document.querySelector(".mainContainer");
+		const photographerHeaderContainer = document.querySelector(".photographer__contact");
 		const modalForm = new ModalForm(this.photographer);
-		mainContainer.innerHTML += modalForm.renderbutton();
-		mainContainer.innerHTML += modalForm.renderForm();
+		photographerHeaderContainer.innerHTML += modalForm.renderbutton();
+		photographerHeaderContainer.innerHTML += modalForm.renderForm();
 		modalForm.workingForm();
 	}
 
 	displayMedia(mediums) {
-		const mainContainer = document.querySelector(".photograph__mediums");
+		const mediumsListContainer = document.querySelector(".mediums__list");
 		this.photographerMediaArray = [];
 		const picture = mediums.map((medium) => {
 			const photographerMedia = new PhotographerMedia(medium);
 			this.photographerMediaArray.push(photographerMedia);
 			return photographerMedia.render();
 		});
-		mainContainer.innerHTML = picture.join("");
+		mediumsListContainer.innerHTML = picture.join("");
 	}
 
 	displaySort() {
-		const mainContainer = document.querySelector(".mainContainer");
+		const mediumsSortContainer = document.querySelector(".mediums__sort");
 		const sortButton = new SortButton();
-		mainContainer.innerHTML += sortButton.render();
+		mediumsSortContainer.innerHTML += sortButton.render();
 	}
 
 	sortMedia() {

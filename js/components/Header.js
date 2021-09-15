@@ -2,10 +2,8 @@ export default class Header {
 
 	render() {
 		return `
-			<header class="headerContainer">
-				<a href="index.html">
+				<a href="index.html" class="index__link">
 					<img src="img/logo.svg" alt="Fisheye home page">
-				</a>
-			</header>`;
+				</a>`;
 	}
 }

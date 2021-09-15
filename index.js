@@ -30,29 +30,29 @@ class Index {
 	}
 
 	displayHeader() {
-		const mainContainer = document.querySelector(".mainContainer");
+		const headerContainer = document.querySelector(".headerContainer");
 		const header = new Header();
-		mainContainer.innerHTML += header.render();
+		headerContainer.innerHTML += header.render();
 	}
 
 	displayNavigation() {
-		const header = document.querySelector("header");
+		const headerContainer = document.querySelector(".headerContainer");
 		const allTags = this.photographers
 			.map((photographer) => {
 				return photographer.tags;
 			})
 			.flat();
 		const navigation = new Navigation(allTags);
-		header.innerHTML += navigation.render();
+		headerContainer.innerHTML += navigation.render();
 	}
 
 	displayPhotographCards(photographers) {
-		const mainContainer = document.querySelector(".photographers__cards");
+		const photographerCards = document.querySelector(".photographers__cards");
 		const cards = photographers.map((photographer) => {
 			const photographerCard = new PhotographerCard(photographer);
 			return photographerCard.render();
 		});
-		mainContainer.innerHTML = cards.join("");
+		photographerCards.innerHTML = cards.join("");
 	}
 
 	sortPhotographers() {

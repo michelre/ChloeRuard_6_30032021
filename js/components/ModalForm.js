@@ -9,24 +9,24 @@ export default class ModalForm {
 		<div class="form__background">
 			<div class="form__modal">
 				<img src="img/closeX.svg" class="form__closeX" data-trigger="closeX" />
-						<h1 class="form__title">Contactez-moi ${this.name}</h1>
+						<h1 class="form__title">Contactez-moi <br /> ${this.name}</h1>
 							<div class="form__body">
 								<form id="form" name="reserve" action="index.html" method="post" data-trigger="form">
 									<div class="form__data">
-										<label for="first">Prénom</label><br />
+										<label for="first" class="form__label">Prénom</label><br />
 										<input class="text-control" type="text" id="first" name="first" minlength="2" /><br />
 									</div>
 									<div class="form__data">
-										<label for="last">Nom</label><br />
+										<label for="last" class="form__label">Nom</label><br />
 										<input class="text-control" type="text" id="last" name="last" /><br />
 									</div>
 									<div class="form__data">
-										<label for="email">Email</label><br />
+										<label for="email" class="form__label">Email</label><br />
 										<input class="text-control" type="email" id="email" name="email" /><br />
 									</div>
 									<div class="form__data">
-										<label for="message">Votre message</label><br />
-										<textarea class="text-control" id="message" name="message" minlength="5"></textarea><br />
+										<label for="message" class="form__label">Votre message</label><br />
+										<textarea class="text-control text-control__message" id="message" name="message" minlength="5"></textarea>
 										<br />
 									</div>
 									<input type="submit" class="button button--submit" value="Envoyer" />
@@ -176,11 +176,12 @@ export default class ModalForm {
 		const showSuccessMessage = () => {
 			const formBody = document.querySelector(".form__body");
 			const successMessage = document.createElement("span");
-			successMessage.id = "success";
-			successMessage.textContent = "Merci ! Votre message a bien été envoyé à";
+			successMessage.classList.add("success");
+			successMessage.textContent = `Merci ! Votre message a bien été envoyé à ${this.name}`;
 			formBody.appendChild(successMessage);
-			successMessage.style.position = "absolute";
-			successMessage.style.top = "50%";
+			// successMessage.style.position = "absolute";
+			// successMessage.style.top = "50%";
+			// successMessage.style.textAlign = "center";
 		};
 
 		const hideFormData = () => {
