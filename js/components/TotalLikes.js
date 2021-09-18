@@ -17,8 +17,10 @@ export default class TotalLikes {
 	render() {
 		return `
 		<div class="photographer__info">
-			<div class="photographer__totalLikes">${this.likes}</div>
-			<div class="photographer__price">${this.price}€ / jour</div>
+			<div class="photographer__totalLikes">${this.likes}
+			</div>
+			<img class="totalLikes__icon" src="img/heart.svg"></img>
+			<div class="photographer__info__price">${this.price}€ / jour</div>
 		</div>`;
 	}
 }
